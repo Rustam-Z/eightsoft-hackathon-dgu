@@ -3,19 +3,189 @@
 {% load crispy_forms_tags %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-    <h1>Homepage</h1>
-    Recommendations List
     {% if user.is_authenticated %}
-        <p><br>  Hi {{ user.email }}!</p>
-        <p><a href="{% url 'account_logout' %}">Log Out</a> |
-        <a href="{% url 'account_change_password' %}">Change Password</a></p>
+        <!-- Kitob almashish ro'yxati -->
+    <div class="container">
+        <h1 class="display-1">Kitoblar almashish ro'yxati</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="jumbotron jumbotron-fluid aboutPost aboutPostLeft">
+                        <div class="jumbotron">
+                            <h6 class="text-uppercase">Sizda bor kitoblar</h6>
+
+                            <!-- Add new book to database -->
+                            <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="form-group">
+                                    {{form_have.name}}
+                                </div>
+                                <div class="form-group">
+                                    {{form_have.description}}
+                                </div>
+
+                                <div class="form-group">
+                                    {{form_have.author}}
+                                </div>
+
+                                <label for="inputState">Toifa</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <br>
+                                <label for="image" class="btn btn-primary">
+                                    Kitob rasmini yuklash
+                                </label>
+                                
+                                <div class="form-group">
+                                    {{form_have.image}}
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" name="book_have">Saqlash</button>
+                            </form>
+
+                            <br>
+                                
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Kitob</th>
+                                        <th scope="col">Muallif</th>
+                                        <th scope="col">Toifa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><a href="book_edit_delete.html">12</a></th>
+                                        <td>Mark Mark Mark Mark Mark Mark Mark Mark</td>
+                                        <td>Otto Otto Otto Otto</td>
+                                        <td>Programming</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark Mark Mark Mark Mark Mark Mark Mark</td>
+                                        <td>Otto Otto Otto Otto</td>
+                                        <td>Programming</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="jumbotron jumbotron-fluid aboutPost aboutPostRight">
+                        <div class="jumbotron ">
+                            <h6 class="text-uppercase">Sizga kerak bo'lgan kitoblar</h6>
+
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Kitob nomi</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Hands-on machine learning with Tensotflow">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Muallif</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Abdullokhshinin">
+                                </div>
+                                <label for="inputState">Toifa</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <br>
+
+                                <button type="submit" class="btn btn-primary">Saqlash</button>
+                            </form>
+
+                            <br>
+                                
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Kitob</th>
+                                        <th scope="col">Muallif</th>
+                                        <th scope="col">Toifa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">12</th>
+                                        <td>Mark Mark Mark Mark Mark Mark Mark Mark</td>
+                                        <td>Programming</td>
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="tinder.html"> <button class="btn-lg btn-secondary longButton" >Kitob almashish bo'yicha hamkor izlash</button></a>
+
+    </div>
+
+    <!-- Search from library -->
+    <div class="container">
+        <div class="row">
+            <h1 class="display-1">Yaqin kutubxonalardan kitobni qidiring</h1>
+            <hr>
+
+            <div class="jumbotron jumbotron-fluid aboutPost">
+                <div class="jumbotron ">
+                    <h6 class="text-uppercase">
+                        Biz O'zbekistondagi barcha kutubxonalar kitoblarining yagona ma'lumotlar bazasini taqdim etamiz.
+                    </h6>
+
+                    <!-- Add new book to database -->
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Kitob nomi</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Hands-on machine learning with Tensotflow">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-left pull-right">Izlash</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clear">
+    </div>
         
+
+        <!-- <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_have.as_p }}
+            <button class="btn btn-success ml-2" type="submit" name="book_have">Save</button>
+        </form>
 
         <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-success ml-2" type="submit" name="bookhave">Save</button>
-        </form>
+            {{ form_need.as_p }}
+            <button class="btn btn-success ml-2" type="submit" name="book_need">Save</button>
+        </form> -->
+
+        <!-- <form class="form-inline mt-2 mt-md-0" action="#"
+            method="get">
+        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search Book"
+            aria-label="Search">
+        </form> -->
+
 
     {% else %}
         <p>You are not logged in</p>

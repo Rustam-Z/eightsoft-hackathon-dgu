@@ -1,24 +1,38 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .forms import BookHaveCreateForm
+from .forms import BookHaveCreateForm, BookNeedCreateForm
 
 # Create your views here.
 
 
 def home(request):
     context = dict()
-    if request.method == 'POST' and 'bookhave' in request.POST:
+    if request.method == 'POST' and 'book_have' in request.POST:
         form = BookHaveCreateForm(request.POST, request.FILES)
         form.instance.user = request.user
         if form.is_valid():
             form.save()
-
-        form = BookHaveCreateForm()
-        context['form'] = form
+        form_have = BookHaveCreateForm()
+        form_need = BookNeedCreateForm()
+        context['form_have'] = form_have
+        context['form_need'] = form_need
+        
+    if request.method == 'POST' and 'book_need' in request.POST:
+        form = BookNeedCreateForm(request.POST)
+        form.instance.user = request.user
+        if form.is_valid():
+            form.save()
+        form_have = BookHaveCreateForm()
+        form_need = BookNeedCreateForm()
+        context['form_have'] = form_have
+        context['form_need'] = form_need
         
     else:
-        form = BookHaveCreateForm()
-        context['form'] = form
+        form_have = BookHaveCreateForm()
+        form_need = BookNeedCreateForm()
+        context['form_have'] = form_have
+        context['form_need'] = form_need
+        
     return render(request, 'home.html', context)
 
 
