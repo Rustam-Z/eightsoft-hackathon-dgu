@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}Home{% endblock title %}
 {% block content %}
     <h1>Homepage</h1>
@@ -8,6 +9,14 @@
         <p><br>  Hi {{ user.email }}!</p>
         <p><a href="{% url 'account_logout' %}">Log Out</a> |
         <a href="{% url 'account_change_password' %}">Change Password</a></p>
+        
+
+        <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success ml-2" type="submit" name="bookhave">Save</button>
+        </form>
+
     {% else %}
         <p>You are not logged in</p>
         <p><a href="{% url 'account_login' %}">Log In</a> |
