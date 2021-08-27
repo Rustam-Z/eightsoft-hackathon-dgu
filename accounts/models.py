@@ -7,7 +7,7 @@ from django.utils.text import slugify
 
 class CustomUser(AbstractUser):
     slug = models.SlugField(max_length=200, unique=True, null=True)
-    phone = models.CharField(verbose_name='telefon', max_length=255, blank=True)
+    phone = models.CharField(verbose_name='telefon raqamingiz', max_length=255, blank=True)
     telegram = models.URLField(verbose_name='telegram URL', blank=True)
     image = models.ImageField(verbose_name='foto surat', upload_to='accounts/', blank=True)
     
