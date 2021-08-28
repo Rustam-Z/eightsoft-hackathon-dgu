@@ -3,11 +3,11 @@
 
 {% block content %}
 
-    <h1>{{ user.username }}</h1>
+    <h1>{{ user.username }}</h1> <hr>
     <form action="" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success ml-2" type="submit">Save</button>
+        <button class="btn btn-success ml-2" type="submit">Saqlash</button>
     </form>
     <br>
 {% endblock content %}

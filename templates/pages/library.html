@@ -1,7 +1,7 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %} Bog'lanish {% endblock title %}
+{% block title %} Kutubxona {% endblock title %}
 
 {% block content %}
 
@@ -12,28 +12,29 @@
 
         <form action="">
             <div class="searchBar">
+
+                <div class="col-lg-3 searchBarItem">
+                    <select class="form-control form-control-lg">
+                        <option value="" selected disabled>Kutubxonalar</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-3 searchBarItem">
+                    <select class="form-control form-control-lg">
+                        <option value="" selected disabled>Toifalar</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                    </select>
+                </div>
+
                 <div class="col-lg-3 searchBarItem">
                     <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
-                </div>
-
-                <div class="col-lg-3 searchBarItem">
-                    <select class="form-control form-control-lg">
-                        <option value="" selected disabled>Muallif</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                    </select>
-                </div>
-
-                <div class="col-lg-3 searchBarItem">
-                    <select class="form-control form-control-lg">
-                        <option value="" selected disabled>Toifa</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                    </select>
                 </div>
 
                 <div class="col-lg-3">

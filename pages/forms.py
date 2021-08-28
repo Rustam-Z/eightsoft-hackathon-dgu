@@ -9,15 +9,19 @@ class BookHaveCreateForm(forms.ModelForm):
             'name',
             'author',
             'description',
-            'image',
+            'image'
         ]
         widgets = {
-                'category': forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Full Name'}),
-                'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Django for Professionals'}),
-                'author': forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'William S. Vincent'}),
+                'name': forms.TextInput(
+                    attrs={'class': 'form-control',
+                           'placeholder' : 'Django for Professionals'}
+                    ),
+                'author': forms.TextInput(
+                    attrs={'class' : 'form-control',
+                           'placeholder' : 'William S. Vincent'}
+                    ),
                 'description': forms.TextInput(
                     attrs={'class' : 'form-control', 'placeholder' : '...'}),
-                # image
             }
         
 
@@ -29,3 +33,14 @@ class BookNeedCreateForm(forms.ModelForm):
             'name',
             'author',
         ]
+        
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'class': 'form-control',
+                       'placeholder' : 'Django for Professionals'}
+                ),
+            'author': forms.TextInput(
+                attrs={'class' : 'form-control',
+                       'placeholder' : 'William S. Vincent'}
+                ),
+        }

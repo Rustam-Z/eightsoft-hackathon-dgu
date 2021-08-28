@@ -53,7 +53,7 @@
                                     </a>
                                     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="profile.html">Profil</a><br>
+                                        <a class="dropdown-item" href="{% url 'account_update' user.slug %}">Profil</a><br>
                                         <a class="dropdown-item" href="{% url 'account_logout' %}">Chiqish</a>
                                     </div>
                                 </li>
