@@ -46,6 +46,6 @@ class AccountUpdateView(LoginRequiredMixin,
 class AccountDetailView(LoginRequiredMixin,
                         DetailView):
     model = CustomUser
-    context_object_name = 'user'
+    context_object_name = 'profile'
     template_name = 'account/profile_view.html'
     login_url = 'account_login'
