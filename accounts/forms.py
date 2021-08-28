@@ -9,6 +9,13 @@ class CustomUserCreationForm(UserCreationForm):
                             required=True)
     telegram = forms.URLField(required=True)
 
+    # add placeholder to forms data phone field and telegram
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = '@username'
+        self.fields['phone'].widget.attrs.update({'placeholder': '97 123 45 67'})
+        self.fields['telegram'].widget.attrs.update({'placeholder': 'https://t.me/username'})
+  
     class Meta(UserCreationForm):
         model = CustomUser
         fields = UserCreationForm.Meta.fields + (

@@ -58,6 +58,40 @@
             </div>
         </div>
     </div>
+
+
+    <div class="col-lg-12">
+        <h3 class="display-1">{{ profile.username }}ga kerakli kitoblar ro'yxati</h3>
+        <hr>
+        <div class="row">
+            <div class="jumbotron jumbotron-fluid aboutPost">
+                <div class="jumbotron">                            
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Kitob</th>
+                                <th scope="col">Muallif</th>
+                                <th scope="col">Toifa</th>
+                            </tr>
+                        </thead>
+
+                        {% for book in profile.books_need.all %}
+                            <tbody>
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{book.name}}</td>
+                                    <td>{{book.author}}</td>
+                                    <td>{{book.category.name}}</td>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
