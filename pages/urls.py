@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AboutPageView, ContactsPageView, LibraryPageView
+from .views import AboutPageView, ContactsPageView
 from . import views
 
 urlpatterns = [
@@ -7,5 +7,4 @@ urlpatterns = [
     path('book_new', views.book_new, name='book_new'),
     path('about/', AboutPageView.as_view(), name='about'),
     path('contacts/', ContactsPageView.as_view(), name='contacts'),
-    path('library/', LibraryPageView.as_view(), name='library'),
 ]
