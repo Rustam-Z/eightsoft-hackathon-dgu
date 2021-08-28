@@ -6,3 +6,4 @@ Bu platformada siz bir-biringiz bilan kitob almashish uchun sherik topa olasiz. 
 
 
 <img src="img/1.png">
+<img src="img/2.png">
