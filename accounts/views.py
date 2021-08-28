@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CustomUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, DetailView
+
+from .forms import CustomUserCreationForm
 from .models import CustomUser
 
 # Create your views here.
@@ -39,3 +41,11 @@ class AccountUpdateView(LoginRequiredMixin,
     # def get_success_url(self):
     #     return reverse_lazy('account_detail',
     #                         kwargs={'slug': self.request.user.slug})
+    
+
+class AccountDetailView(LoginRequiredMixin,
+                        DetailView):
+    model = CustomUser
+    context_object_name = 'user'
+    template_name = 'account/profile_view.html'
+    login_url = 'account_login'
