@@ -4,10 +4,9 @@
 {% block title %} Kutubxona {% endblock title %}
 
 {% block content %}
+<!-- Content body -->
+<div class="wrapper">
 
-
-  <!-- Content body -->
-  <div class="wrapper">
     <div class="container"><div class="row">
 
         <form action="{% url 'library_region' %}" method="post" enctype="multipart/form-data">
@@ -20,31 +19,74 @@
             </div>
         </form>
 
-        <br>
+        <!-- <br>
         <h2> {{region_name}} </h2>
-        <br>
+        <br> -->
 
-        {% for library in libraries %}
+        {# if libraries list is  empty #}
 
-        <div class="col-sm-6 col-md-4">     <div class="thumbnail">
-            <img src="{% if library.image %}
-                        {{  library.image.url }}
-                    {% else %}
-                        {% static 'img/no_image.png' %}
-                    {% endif %}" alt="Title">
-            <div class="caption">
-                <h4>{{library.name}}</h4>
-                <p> {{library.region}} </p>
-                <p> {{library.phone}}</p>
-                <a href="{% url 'library_detail' library.slug %}" class="btn btn-primary" role="button">O'tish</a>
+
+        {% if region_name and libraries|length > 0  %}
+
+            <div class="container">    
+                <h3 class="display-1"> {{ region_name }}dagi kutubxonalar ro'yxati</h3>
+                <hr>
             </div>
-        </div></div>
 
-        {% endfor %}
+            {% for library in libraries %}
+
+                    <div class="col-sm-6 col-md-4">     <div class="thumbnail">
+                        <img src="{% if library.image %}
+                                    {{  library.image.url }}
+                                {% else %}
+                                    {% static 'img/no_image.png' %}
+                                {% endif %}" alt="Thumbnail">
+                        <div class="caption">
+                            <h4>{{library.name}}</h4>
+                            <p> {{library.region}} </p>
+                            <p> {{library.phone}}</p>
+                            <a href="{% url 'library_detail' library.slug %}" class="btn btn-primary" role="button">O'tish</a>
+                        </div>
+                    </div></div>
+
+            {% endfor %}
+        
+        {% elif region_name is empty %}
+            <div class="container">    
+                <h3 class="display-1"> {{ region_name }}Hamma kutubxonalar ro'yxati</h3>
+                <hr>
+            </div>
+
+            {% for library in libraries %}
+
+                    <div class="col-sm-6 col-md-4">     <div class="thumbnail">
+                        <img src="{% if library.image %}
+                                    {{  library.image.url }}
+                                {% else %}
+                                    {% static 'img/no_image.png' %}
+                                {% endif %}" alt="Thumbnail">
+                        <div class="caption">
+                            <h4>{{library.name}}</h4>
+                            <p> {{library.region}} </p>
+                            <p> {{library.phone}}</p>
+                            <a href="{% url 'library_detail' library.slug %}" class="btn btn-primary" role="button">O'tish</a>
+                        </div>
+                    </div></div>
+
+            {% endfor %}
+
+        {% else %}
+
+        <div class="container">    
+            <h3 class="display-1">Afsuski, {{region_name}}da kutubxonalar yo'q</h3>
+        </div>
+
+
+        {% endif %}
+
 
     </div></div>
 </div>
-
 <br><br>
 
 {% endblock content %}

@@ -7,12 +7,17 @@
 
   <!-- Content body -->
   <div class="wrapper">
-    <div class="container"><div class="row">
+    <div class="container">
+
+      <h3 class="display-1"> {{ library.name }}</h3>
+      <hr>
+      
+      <div class="row">
 
         <form action="">
             <div class="searchBar">
 
-                <div class="col-lg-3 searchBarItem">
+                <div class="col-lg-4 searchBarItem">
                     <select class="form-control form-control-lg">
                         <option value="" selected disabled>Toifa</option>
                         <option>Large select</option>
@@ -23,22 +28,12 @@
                 </div>
 
 
-                <div class="col-lg-3 searchBarItem">
-                    <select class="form-control form-control-lg">
-                        <option value="" selected disabled>Muallif</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                    </select>
-                </div>
-
-                <div class="col-lg-3 searchBarItem">
+                <div class="col-lg-4 searchBarItem">
                     <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
                 </div>
 
 
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <button type="submit" class="btn btn-primary longButton">Izlash</button>
                 </div>
                 
@@ -55,23 +50,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>45 max chars</td>
-                <td>45 max chars</td>
-                <td>45 max chars</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+
+              {% for b in library.books.all %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ b.name }}</td>
+                  <td>{{ b.category }}</td>
+                  <td>{{ b.author }}</td>
+                </tr>
+              {% endfor %}
             </tbody>
         </table>
 

@@ -23,4 +23,8 @@ class LibraryRegionForm(forms.ModelForm):
         fields = [
             'region',
         ]
-
+    
+    # add the css class to form 
+    def __init__(self, *args, **kwargs):
+        super(LibraryRegionForm, self).__init__(*args, **kwargs)
+        self.fields['region'].widget.attrs.update({'class' : 'form-control'})  

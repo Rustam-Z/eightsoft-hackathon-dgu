@@ -202,7 +202,10 @@ textarea.form-control{
 }
 
 .thumbnail a>img, .thumbnail>img {
-    max-height: 200px;
+	width: 340px;
+	height: 200px;
+	padding-top: 5px;
+	object-fit: cover;
 }
 
 .panel-default>.panel-heading {
@@ -292,7 +295,7 @@ textarea.form-control{
 
 .longButton{
 	width: 100%;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .likeButton{
@@ -308,12 +311,12 @@ textarea.form-control{
 }
 
 .searchBar{
-	margin: 0 0 5% 0;
-	padding: 2%;
+	margin: 0 0 0 0;
+	padding-bottom: 5px;
 }
 
 .searchBarItem{
-	margin-bottom: 2%;
+	margin-bottom: 0px ;
 }
 
 input[type="file"] {
