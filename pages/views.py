@@ -56,9 +56,5 @@ class ContactsPageView(TemplateView):
     template_name = 'pages/contacts.html'
 
 
-class MatchPageView(TemplateView):
-    template_name = 'pages/match.html'   
-
-
 class LibraryPageView(TemplateView):
     template_name = 'pages/library.html' 
