@@ -4,11 +4,13 @@
 {% block title %}Sign Up{% endblock title %}
 
 {% block content %}
-    <h2>Sign Up</h2>
+    <h1 class="display-1">Ro'yxatdan o'tish</h1>
+    <hr>
+
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success" type="submit">Sign Up</button>
+        <button class="btn btn-success" type="submit">Kirish</button>
     </form>
-    <br>
+    <br><br>
 {% endblock content %}

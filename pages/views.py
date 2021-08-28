@@ -38,3 +38,14 @@ def home(request):
 
 class AboutPageView(TemplateView):
     template_name = 'about.html'
+
+
+class ContactsPageView(TemplateView):
+    template_name = 'contacts.html'
+
+class MatchPageView(TemplateView):
+    template_name = 'match.html'   
+
+
+class LibraryPageView(TemplateView):
+    template_name = 'library.html' 

@@ -122,7 +122,7 @@ textarea.form-control{
 
 .clear {
 	clear: both;
-	height: 63px;
+	height: 20px;
 }
 
 .clear-both{
@@ -270,7 +270,7 @@ textarea.form-control{
 }
 
 .backgroundImage{
-	background-image: url(../../assets/img/indexBackground2.jpg);
+	background-image: url(../../static/img/indexBackground2.jpg);
 	background-size: 70%;
 	/* background-size: 500px; */
 	background-repeat: no-repeat;

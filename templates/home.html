@@ -1,10 +1,10 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}Home{% endblock title %}
+{% block title %} Bosh sahifa {% endblock title %}
 {% block content %}
-    {% if user.is_authenticated %}
-        <!-- Kitob almashish ro'yxati -->
+
+    <!-- Kitob almashish ro'yxati -->
     <div class="container">
         <h1 class="display-1">Kitoblar almashish ro'yxati</h1>
         <hr>
@@ -132,17 +132,15 @@
             </div>
 
         </div>
-
-        <a href="tinder.html"> <button class="btn-lg btn-secondary longButton" >Kitob almashish bo'yicha hamkor izlash</button></a>
-
+        <a href="{% url 'match' %}"> <button class="btn-lg btn-secondary longButton" >Kitob almashish bo'yicha hamkor izlash</button></a>
     </div>
+
 
     <!-- Search from library -->
     <div class="container">
+        <h1 class="display-1">Yaqin kutubxonalardan kitobni qidiring</h1>
+        <hr>
         <div class="row">
-            <h1 class="display-1">Yaqin kutubxonalardan kitobni qidiring</h1>
-            <hr>
-
             <div class="jumbotron jumbotron-fluid aboutPost">
                 <div class="jumbotron ">
                     <h6 class="text-uppercase">
@@ -160,13 +158,9 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
-
-    <div class="clear">
-    </div>
-        
+            
 
         <!-- <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -186,10 +180,4 @@
             aria-label="Search">
         </form> -->
 
-
-    {% else %}
-        <p>You are not logged in</p>
-        <p><a href="{% url 'account_login' %}">Log In</a> |
-        <a href="{% url 'account_signup' %}">Sign Up</a></p>
-    {% endif %}
 {% endblock content %}

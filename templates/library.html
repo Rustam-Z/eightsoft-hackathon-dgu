@@ -1,0 +1,93 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Bog'lanish {% endblock title %}
+
+{% block content %}
+
+
+<!-- Content body -->
+<div class="wrapper">
+    <div class="container"><div class="row">
+
+        <form action="">
+            <div class="searchBar">
+                <div class="col-lg-3 searchBarItem">
+                    <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
+                </div>
+
+                <div class="col-lg-3 searchBarItem">
+                    <select class="form-control form-control-lg">
+                        <option value="" selected disabled>Muallif</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-3 searchBarItem">
+                    <select class="form-control form-control-lg">
+                        <option value="" selected disabled>Toifa</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-primary longButton">Izlash</button>
+                </div>
+                
+            </div>
+        </form>
+
+
+        <div class="col-sm-6 col-md-4">     <div class="thumbnail">
+            <img src="{% static 'img/indexBackground2.jpg' %}" alt="Title">
+            <div class="caption">
+                <h4>Hands on machine learning with</h4>
+                <p> Rustam Zokirov </p>
+                    <a href="#" class="btn btn-primary" role="button">Like</a> 
+                    <a href="#" class="btn btn-primary" role="button">Comment</a>
+                    <a href="#" class="btn btn-primary" role="button">Read more</a>
+            </div>
+        </div></div>
+
+
+        <div class="col-sm-6 col-md-4">     <div class="thumbnail">
+            <img src="{% static 'img/indexBackground2.jpg' %}" alt="Title">
+            <div class="caption">
+                <h4>Hands on machine learning with</h4>
+                <p> Description</p>
+                <p>
+                    <a href="#" class="btn btn-primary" role="button">Like</a> 
+                    <a href="#" class="btn btn-primary" role="button">Comment</a>
+                    <a href="#" class="btn btn-primary" role="button">Read more</a>
+                </p>
+            </div>
+        </div></div>
+
+
+        <div class="col-sm-6 col-md-4">     <div class="thumbnail">
+            <img src="{% static 'img/indexBackground2.jpg' %}" alt="Title">
+            <div class="caption">
+                <h4>Hands on machine learning with</h4>
+                <p> Description</p>
+                <p>
+                    <a href="#" class="btn btn-primary" role="button">Like</a> 
+                    <a href="#" class="btn btn-primary" role="button">Comment</a>
+                    <a href="#" class="btn btn-primary" role="button">Read more</a>
+                </p>
+            </div>
+        </div></div>
+
+
+    </div></div>
+</div>
+
+<br><br>
+  
+
+{% endblock content %}
