@@ -1,0 +1,81 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Kutubxona {% endblock title %}
+
+{% block content %}
+
+  <!-- Content body -->
+  <div class="wrapper">
+    <div class="container"><div class="row">
+
+        <form action="">
+            <div class="searchBar">
+
+                <div class="col-lg-3 searchBarItem">
+                    <select class="form-control form-control-lg">
+                        <option value="" selected disabled>Toifa</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                    </select>
+                </div>
+
+
+                <div class="col-lg-3 searchBarItem">
+                    <select class="form-control form-control-lg">
+                        <option value="" selected disabled>Muallif</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                        <option>Large select</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-3 searchBarItem">
+                    <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
+                </div>
+
+
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-primary longButton">Izlash</button>
+                </div>
+                
+            </div>
+        </form>
+
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Kitob nomi</th>
+                <th scope="col">Toifa</th>
+                <th scope="col">Muallif</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>45 max chars</td>
+                <td>45 max chars</td>
+                <td>45 max chars</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+        </table>
+
+    </div></div>
+</div>
+
+{% endblock content %}

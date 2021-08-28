@@ -1,4 +1,44 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Mos kitoblar {% endblock title %}
 
+{% block content %}
+<!-- Content body -->
+<div class="wrapper">
+    <div class="container">
+        <h1 class="display-1">Eng mos takliflar ro'yxati</h1><hr>
+        <div class="row">
+
+            {% for have, need in book_have_need_match_list %}
+                <div class="col-sm-6 col-md-4">     <div class="thumbnail">
+                    <img src="{% if need.image.url %}
+                                {{ need.image.url }}
+                            {% else %}
+                                {% static 'img/no_image.png' %}
+                            {% endif %}">
+                        <div class="caption">
+                        <h4>⬇️ {{ need.name|slice:":30" }}</h4>
+                        <!-- <p>{{have.user}} need {{have.name}} and {{need.user}} have {{need.name}}</p> -->
+                        <h4>⬆️ {{ have.name|slice:":30" }}</h4>
+                        <p>Toifa: {{ need.category|slice:":30" }}</p>
+                        <p>Muallif: {{ need.author|slice:":30" }}</p>
+
+                        <p> <a href="profile_view.html" class="btn btn-primary" role="button">{{ need.user|slice:":15" }}</a>
+                            <a href="#" class="btn btn-primary" role="button">{{ need.user.region }}</a> 
+                        </p>
+                    </div>
+                </div></div>
+            {% endfor %} 
+
+
+    </div></div>
+</div>
+{% endblock content %}
+
+
+<!-- 
 {% for have, need in book_have_need_match_list %}
- {{have.user}} need {{have.name}} and {{need.user}} have {{need.name}}
-{% endfor %}
+{{have.user}} need {{have.name}} and {{need.user}} have {{need.name}}
+{% endfor %}  -->
+

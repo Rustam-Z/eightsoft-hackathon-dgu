@@ -1,0 +1,67 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profil{% endblock title %}
+
+{% block content %}
+
+<!-- Main content -->
+<div class="container">
+
+    <div class="col-lg-12 bar">
+        <div class="col-lg-3 col-md-3 col-sm-8 img-bar border-right">
+            <img class="img-responsive" src="assets/img/rustam.png" alt="Rustam Zokirov">
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-8 content-bar">
+            <div class = "h1"><a href = "#"  class="tracking-in-expand">Rustam Zokirov</a></div>
+            <p>Data Engineer & Machine Learning Enthusiast</p>
+            <p>Samarkand viloyati</p>
+
+            <a class="btn btn-primary topicTag" role="button">+998974060445</a><br>
+            <a href="https://t.me/rustamzokirov" class="btn btn-primary topicTag" role="button">Telegram</a>
+    </div>
+
+
+    <div class="col-lg-12">
+        <h3 class="display-1">Rustamda bor kitoblar ro'yxati</h3>
+        <hr>
+        <div class="row">
+            <div class="jumbotron jumbotron-fluid aboutPost">
+                <div class="jumbotron">                            
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Kitob</th>
+                                <th scope="col">Muallif</th>
+                                <th scope="col">Toifa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark Mark Mark Mark Mark Mark Mark Mark</td>
+                                <td>Otto Otto Otto Otto</td>
+                                <td>Programming</td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark Mark Mark Mark Mark Mark Mark Mark</td>
+                                <td>Otto Otto Otto Otto</td>
+                                <td>Programming</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+
+{% endblock content %}
