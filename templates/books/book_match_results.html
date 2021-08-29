@@ -12,7 +12,7 @@
 
             {% for have, need in book_have_need_match_list %}
                 <div class="col-sm-6 col-md-4">     <div class="thumbnail" id="heightLimited">
-                    <img src="{% if need.image.url %}
+                    <img src="{% if need.image %}
                                 {{ need.image.url }}
                             {% else %}
                                 {% static 'img/no_image.png' %}
