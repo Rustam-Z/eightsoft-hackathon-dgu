@@ -56,15 +56,14 @@ def library_books_by_category(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             context = dict()
-            print(request.POST['category'])
             library_books_by_category = Book.objects.filter(
                 Q(category=request.POST['category']) & Q(library=request.POST['library'])
             )
             context['library_books_by_category'] = library_books_by_category
             context['library'] = Book.objects.filter(library=request.POST['library']).first().library
-            context['category_name'] = library_books_by_category.first().category.name
+            context['category_name'] = Category.objects.filter(id=request.POST['category']).first().name
             context['categories'] = Category.objects.all()
             return render(request, 'libraries/library_book_category_list.html', context)
-        
+
         return reverse_lazy('library_detail')
     return redirect('account_login')

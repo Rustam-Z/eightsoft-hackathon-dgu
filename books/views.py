@@ -89,18 +89,18 @@ def book_search(request):
             context = dict()
             book_name = request.POST['book']
             searched_books_list = Book.objects.filter(
-                Q(name__icontains=book_name) | 
-                Q(author__icontains=book_name) & 
+                (Q(name__icontains=book_name) |
+                Q(author__icontains=book_name)) &
                 Q(library__region=request.user.region)
             )
             context['searched_books_list'] = searched_books_list
-            
+
             all_searched_books_list = Book.objects.filter(
-                Q(name__icontains=book_name) | 
+                Q(name__icontains=book_name) |
                 Q(author__icontains=book_name)
             )
             context['all_searched_books_list'] = all_searched_books_list
-            
+
             return render(request, 'books/book_search.html', context)
         return reverse_lazy('home')
     return redirect('account_login')
@@ -112,18 +112,18 @@ def book_search_library(request):
             context = dict()
             book_name = request.POST['book']
             searched_books_list = Book.objects.filter(
-                Q(name__icontains=book_name) | 
-                Q(author__icontains=book_name) & 
+                (Q(name__icontains=book_name) |
+                Q(author__icontains=book_name)) &
                 Q(library__id=request.POST['library'])
             )
             context['searched_books_list'] = searched_books_list
-            
+
             all_searched_books_list = Book.objects.filter(
-                Q(name__icontains=book_name) | 
+                Q(name__icontains=book_name) |
                 Q(author__icontains=book_name)
             )
             context['all_searched_books_list'] = all_searched_books_list
-            
+
             return render(request, 'books/book_search.html', context)
         return reverse_lazy('home')
     return redirect('account_login')
