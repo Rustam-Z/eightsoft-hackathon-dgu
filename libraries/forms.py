@@ -28,3 +28,4 @@ class LibraryRegionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(LibraryRegionForm, self).__init__(*args, **kwargs)
         self.fields['region'].widget.attrs.update({'class' : 'form-control'})  
+        

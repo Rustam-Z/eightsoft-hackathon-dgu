@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.db.models import Q
 
 from .models import Book, Library
 from .forms import LibraryRegionForm
@@ -24,16 +25,18 @@ def library(request):
 
 
 def library_region(request):
-    if request.method == 'POST':
-        context = dict()
-        form = LibraryRegionForm()
-        libraries_by_region = Library.objects.filter(region=request.POST['region'])
-        context['libraries'] = libraries_by_region
-        context['form'] = form
-        context['region_name'] = request.POST['region']
-        return render(request, 'libraries/library.html', context)
-    
-    return redirect('library')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            context = dict()
+            form = LibraryRegionForm()
+            libraries_by_region = Library.objects.filter(region=request.POST['region'])
+            context['libraries'] = libraries_by_region
+            context['form'] = form
+            context['region_name'] = request.POST['region']
+            return render(request, 'libraries/library.html', context)
+        
+        return redirect('library')
+    return redirect('home')
 
 
 class LibraryDetailView(LoginRequiredMixin,
@@ -50,11 +53,18 @@ class LibraryDetailView(LoginRequiredMixin,
 
 
 def library_books_by_category(request):
-    if request.method == 'POST':
-        context = dict()
-        libraries_by_region = Library.objects.filter(region=request.POST['region'])
-        context['libraries'] = libraries_by_region
-        context['form'] = form
-        context['region_name'] = request.POST['region']
-        return render(request, 'libraries/library.html', context)
-    return redirect('library')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            context = dict()
+            print(request.POST['category'])
+            library_books_by_category = Book.objects.filter(
+                Q(category=request.POST['category']) & Q(library=request.POST['library'])
+            )
+            context['library_books_by_category'] = library_books_by_category
+            context['library'] = Book.objects.filter(library=request.POST['library']).first().library
+            context['category_name'] = library_books_by_category.first().category.name
+            context['categories'] = Category.objects.all()
+            return render(request, 'libraries/library_book_category_list.html', context)
+        
+        return reverse_lazy('library_detail')
+    return redirect('home')
