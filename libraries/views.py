@@ -49,12 +49,12 @@ class LibraryDetailView(LoginRequiredMixin,
         return context
 
 
-# def library_books_by_category(request):
-#     if request.method == 'POST':
-#         context = dict()
-#         libraries_by_region = Library.objects.filter(region=request.POST['region'])
-#         context['libraries'] = libraries_by_region
-#         context['form'] = form
-#         context['region_name'] = request.POST['region']
-#         return render(request, 'libraries/library.html', context)
-#     return redirect('library')
+def library_books_by_category(request):
+    if request.method == 'POST':
+        context = dict()
+        libraries_by_region = Library.objects.filter(region=request.POST['region'])
+        context['libraries'] = libraries_by_region
+        context['form'] = form
+        context['region_name'] = request.POST['region']
+        return render(request, 'libraries/library.html', context)
+    return redirect('library')
