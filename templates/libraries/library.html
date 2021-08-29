@@ -42,9 +42,9 @@
                                     {% static 'img/no_image.png' %}
                                 {% endif %}" alt="Thumbnail">
                         <div class="caption">
-                            <h4>{{library.name}}</h4>
-                            <p> {{library.region}} </p>
-                            <p> {{library.phone}}</p>
+                            <h4>{{library.name|slice:":30"}}</h4>
+                            <p> {{library.region|slice:":30"}} </p>
+                            <p> {{library.phone|slice:":30"}}</p>
                             <a href="{% url 'library_detail' library.slug %}" class="btn btn-primary" role="button">O'tish</a>
                         </div>
                     </div></div>
@@ -66,9 +66,9 @@
                                     {% static 'img/no_image.png' %}
                                 {% endif %}" alt="Thumbnail">
                         <div class="caption">
-                            <h4>{{library.name}}</h4>
-                            <p> {{library.region}} </p>
-                            <p> {{library.phone}}</p>
+                            <h4>{{library.name|slice:":30"}}</h4>
+                            <p> {{library.region|slice:":30"}} </p>
+                            <p> {{library.phone|slice:":30"}}</p>
                             <a href="{% url 'library_detail' library.slug %}" class="btn btn-primary" role="button">O'tish</a>
                         </div>
                     </div></div>

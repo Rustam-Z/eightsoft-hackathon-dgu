@@ -46,9 +46,9 @@
                             <tbody>
                                 <tr>
                                     <td>{{forloop.counter}}</td>
-                                    <td>{{book.name}}</td>
-                                    <td>{{book.author}}</td>
-                                    <td>{{book.category.name}}</td>
+                                    <td>{{book.name|slice:":30"}}</td>
+                                    <td>{{book.author|slice:":30"}}</td>
+                                    <td>{{book.category.name|slice:":30"}}</td>
                                 </tr>
                             </tbody>
                         {% endfor %}
@@ -80,9 +80,9 @@
                             <tbody>
                                 <tr>
                                     <td>{{forloop.counter}}</td>
-                                    <td>{{book.name}}</td>
-                                    <td>{{book.author}}</td>
-                                    <td>{{book.category.name}}</td>
+                                    <td>{{book.name|slice:":30"}}</td>
+                                    <td>{{book.author|slice:":30"}}</td>
+                                    <td>{{book.category.name|slice:":30"}}</td>
                                 </tr>
                             </tbody>
                         {% endfor %}

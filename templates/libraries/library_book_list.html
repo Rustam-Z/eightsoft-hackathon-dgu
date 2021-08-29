@@ -59,9 +59,9 @@
               {% for b in library.books.all %}
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
-                  <td>{{ b.name }}</td>
-                  <td>{{ b.category }}</td>
-                  <td>{{ b.author }}</td>
+                  <td>{{ b.name|slice:":40" }}</td>
+                  <td>{{ b.category|slice:":40" }}</td>
+                  <td>{{ b.author|slice:":40" }}</td>
                 </tr>
               {% endfor %}
             </tbody>
