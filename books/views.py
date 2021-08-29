@@ -134,6 +134,8 @@ def match_results(request):
     if request.user.is_anonymous:
         return redirect('account_login')
     
+    if BookNeed.objects.filter(user=request.user).count() < 1 and BookHave.objects.filter(user=request.user).count() < 1:
+        return redirect('home')
     
     context = dict()
     
