@@ -14,31 +14,33 @@
       
       <div class="row">
 
-        <form action="">
+        <form action="{% url 'library_books_by_category' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="searchBar">
-
-                <div class="col-lg-4 searchBarItem">
+                <div class="col-lg-3 searchBarItem">
                     <select class="form-control form-control-lg">
                         <option value="" selected disabled>Toifa</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
-                        <option>Large select</option>
+                        {% for category in categories %}
+                          <option value="{{category.id}}"> {{category.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
-
-
-                <div class="col-lg-4 searchBarItem">
-                    <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-primary longButton">Kitoblarni filtrlash</button>
                 </div>
-
-
-                <div class="col-lg-4">
-                    <button type="submit" class="btn btn-primary longButton">Izlash</button>
-                </div>
-                
             </div>
         </form>
+
+        <form action="">
+          <div class="searchBar">
+              <div class="col-lg-3 searchBarItem">
+                  <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
+              </div>
+              <div class="col-lg-3">
+                  <button type="submit" class="btn btn-primary longButton">Izlash</button>
+              </div>
+          </div>
+      </form>
 
         <table class="table table-hover">
             <thead>

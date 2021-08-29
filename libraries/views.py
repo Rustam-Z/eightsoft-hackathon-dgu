@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 
 from .models import Book, Library
 from .forms import LibraryRegionForm
+from categories.models import Category
 
 # Create your views here.
 
@@ -41,3 +42,19 @@ class LibraryDetailView(LoginRequiredMixin,
     context_object_name = 'library'
     template_name = 'libraries/library_book_list.html'
     login_url = 'account_login'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
+
+# def library_books_by_category(request):
+#     if request.method == 'POST':
+#         context = dict()
+#         libraries_by_region = Library.objects.filter(region=request.POST['region'])
+#         context['libraries'] = libraries_by_region
+#         context['form'] = form
+#         context['region_name'] = request.POST['region']
+#         return render(request, 'libraries/library.html', context)
+#     return redirect('library')
