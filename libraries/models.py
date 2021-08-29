@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import uuid
-
+from categories.models import Category
 # Create your models here.
 
 
@@ -56,6 +56,7 @@ class Book(models.Model):
                                  verbose_name='kutubxona',
                                  related_name='books',
                                  on_delete=models.CASCADE)
+    
     name = models.CharField(verbose_name='kitob nomi', max_length=255)
     author = models.CharField(verbose_name='muallif', max_length=255)
     image = models.ImageField(verbose_name='kitob rasmini yuklash',
@@ -65,6 +66,10 @@ class Book(models.Model):
     available = models.BooleanField(verbose_name='mavjud?', default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    category = models.ForeignKey(Category,
+                                 verbose_name='toifasi',
+                                 related_name='library_books',
+                                 on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name} in {self.library}"

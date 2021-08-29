@@ -20,6 +20,7 @@ class BookAdmin(admin.ModelAdmin):
         'name',
         'author',
         'library',
+        'category',
         'available',
     ]
 
