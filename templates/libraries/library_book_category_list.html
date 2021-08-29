@@ -32,16 +32,18 @@
             </div>
         </form>
 
-        <form action="">
-          <div class="searchBar">
-              <div class="col-lg-3 searchBarItem">
-                  <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
-              </div>
-              <div class="col-lg-3">
-                  <button type="submit" class="btn btn-primary longButton">Izlash</button>
-              </div>
-          </div>
-      </form>
+        <form action="{% url 'book_search_library' %}" method="post">
+            {% csrf_token %}
+            <div class="searchBar">
+                <div class="col-lg-3 searchBarItem">
+                    <input name=book class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
+                </div>
+                <input type="hidden" name='library' value="{{library.id}}">
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-primary longButton">Izlash</button>
+                </div>
+            </div>
+        </form>
 
         <div class="container">    
             <h3 class="display-1"> {{library.name}} | {{ category_name }} toifasidagi kitoblar ro'yxati</h3>

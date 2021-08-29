@@ -1,3 +1,4 @@
+from libraries.views import library
 from django.shortcuts import redirect, render
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
@@ -13,6 +14,7 @@ from django.shortcuts import redirect
 
 from .models import BookHave, BookNeed
 from categories.models import Category
+from libraries.models import Book
 
 
 class BookHaveUpdateView(LoginRequiredMixin,
@@ -80,6 +82,53 @@ class BookNeedDeleteView(LoginRequiredMixin,
     def get_success_url(self):
         return reverse('home')
     
+    
+def book_search(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            context = dict()
+            book_name = request.POST['book']
+            searched_books_list = Book.objects.filter(
+                Q(name__icontains=book_name) | 
+                Q(author__icontains=book_name) & 
+                Q(library__region=request.user.region)
+            )
+            context['searched_books_list'] = searched_books_list
+            
+            all_searched_books_list = Book.objects.filter(
+                Q(name__icontains=book_name) | 
+                Q(author__icontains=book_name)
+            )
+            context['all_searched_books_list'] = all_searched_books_list
+            
+            return render(request, 'books/book_search.html', context)
+        return reverse_lazy('home')
+    return redirect('account_login')
+
+
+def book_search_library(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            context = dict()
+            book_name = request.POST['book']
+            searched_books_list = Book.objects.filter(
+                Q(name__icontains=book_name) | 
+                Q(author__icontains=book_name) & 
+                Q(library__id=request.POST['library'])
+            )
+            context['searched_books_list'] = searched_books_list
+            
+            all_searched_books_list = Book.objects.filter(
+                Q(name__icontains=book_name) | 
+                Q(author__icontains=book_name)
+            )
+            context['all_searched_books_list'] = all_searched_books_list
+            
+            return render(request, 'books/book_search.html', context)
+        return reverse_lazy('home')
+    return redirect('account_login')
+
+
 
 def match_results(request):
     if request.user.is_anonymous:
@@ -93,7 +142,7 @@ def match_results(request):
     user_need_books_name = list()
     for book in user_need_books: 
         user_need_books_name.append(book.name)
-    query = functools.reduce(operator.and_, (Q(name__contains = i) for i in user_need_books_name))    
+    query = functools.reduce(operator.and_, (Q(name__icontains = i) for i in user_need_books_name))    
     users_have_book = BookHave.objects.filter(
             query
         )
@@ -104,7 +153,7 @@ def match_results(request):
     user_have_books_name = list()
     for book in user_have_books: 
         user_have_books_name.append(book.name)
-    query2 = functools.reduce(operator.and_, (Q(name__contains = i) for i in user_have_books_name))
+    query2 = functools.reduce(operator.and_, (Q(name__icontains = i) for i in user_have_books_name))
     users_need_book = BookNeed.objects.filter(
             query2
         )

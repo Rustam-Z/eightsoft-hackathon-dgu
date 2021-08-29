@@ -32,11 +32,13 @@
             </div>
         </form>
 
-        <form action="">
+        <form action="{% url 'book_search_library' %}" method="post">
+          {% csrf_token %}
           <div class="searchBar">
               <div class="col-lg-3 searchBarItem">
-                  <input class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
+                  <input name=book class="form-control form-control-lg" type="text" placeholder="Kitob nomi">
               </div>
+              <input type="hidden" name='library' value="{{library.id}}">
               <div class="col-lg-3">
                   <button type="submit" class="btn btn-primary longButton">Izlash</button>
               </div>

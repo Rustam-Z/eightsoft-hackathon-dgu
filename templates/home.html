@@ -150,10 +150,11 @@
                     </h6>
 
                     <!-- Add new book to database -->
-                    <form>
+                    <form action="{% url 'book_search' %}" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Kitob nomi</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Hands-on machine learning with Tensotflow">
+                            <input name="book" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Hands-on machine learning with Tensotflow">
                         </div>
                         
                         <button type="submit" class="btn btn-primary btn-left pull-right">Izlash</button>

@@ -28,4 +28,12 @@ urlpatterns = [
     path('match/',
          views.match_results,
          name='book_match_list'),
+    
+    path('book_search/',
+         views.book_search,
+         name='book_search'),
+    
+    path('book_search_library/',
+         views.book_search_library,
+         name='book_search_library'),
 ]

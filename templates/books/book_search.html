@@ -1,0 +1,66 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Qidiruv {% endblock title %}
+
+{% block content %}
+<!-- Content body -->
+<div class="wrapper">
+    <div class="container">
+        <h1 class="display-1">Eng mos qidiruv natijalari </h1><hr>
+        <div class="row">
+
+            {% for book in searched_books_list %}
+                <div class="col-sm-6 col-md-4">     <div class="thumbnail" id="heightLimited">
+                    <img src="{% if book.image %}
+                                {{ book.image.url }}
+                            {% else %}
+                                {% static 'img/no_image.png' %}
+                            {% endif %}">
+                    <div class="caption text-center" >
+                        <h4> {{ book.name|slice:":30" }}</h4>
+
+                        <!-- <p>{{have.user}} need {{have.name}} and {{need.user}} have {{need.name}}</p> -->
+                        <p><b>Toifa:</b> {{ book.category|slice:":30" }}</p>
+                        <p><b>Muallif:</b> {{ book.author|slice:":30" }}</p>
+
+                        <p>  
+                            <a href="#" class="btn btn-primary noHover" role="button">{{ book.library.region }}</a> 
+                            <a href="#" class="btn btn-primary" role="button">{{ book.library.name|slice:":15" }}</a>
+                        </p>
+                    </div>
+                </div></div>
+            {% endfor %} 
+
+
+    </div></div>
+    <div class="container">
+        <h1 class="display-1">Barcha qidiruv natijalari </h1><hr>
+        <div class="row">
+
+            {% for book in all_searched_books_list %}
+                <div class="col-sm-6 col-md-4">     <div class="thumbnail" id="heightLimited">
+                    <img src="{% if book.image %}
+                                {{ book.image.url }}
+                            {% else %}
+                                {% static 'img/no_image.png' %}
+                            {% endif %}">
+                    <div class="caption text-center" >
+                        <h4> {{ book.name|slice:":30" }}</h4>
+
+                        <!-- <p>{{have.user}} need {{have.name}} and {{need.user}} have {{need.name}}</p> -->
+                        <p><b>Toifa:</b> {{ book.category|slice:":30" }}</p>
+                        <p><b>Muallif:</b> {{ book.author|slice:":30" }}</p>
+
+                        <p>  
+                            <a href="#" class="btn btn-primary noHover" role="button">{{ book.library.region }}</a> 
+                            <a href="#" class="btn btn-primary" role="button">{{ book.library.name|slice:":15" }}</a>
+                        </p>
+                    </div>
+                </div></div>
+            {% endfor %} 
+
+
+    </div></div>
+</div>
+{% endblock content %}

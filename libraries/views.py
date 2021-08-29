@@ -67,4 +67,4 @@ def library_books_by_category(request):
             return render(request, 'libraries/library_book_category_list.html', context)
         
         return reverse_lazy('library_detail')
-    return redirect('home')
+    return redirect('account_login')
